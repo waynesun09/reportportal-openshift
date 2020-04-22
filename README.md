@@ -1,4 +1,4 @@
-Ansible Role: ReportPortal-Openshift
+Ansible Role: ReportPortal Openshift
 ====================================
 
 Deploy ReportPortal v5 on OpenShift Container Platform.
@@ -163,7 +163,7 @@ Including an example of how to use your role (for instance, with variables passe
         - namespace: your_openshift_project_name
         - app_domain: your_openshift_app_domain_name
       roles:
-         - role: waynesun09.reportportal-openshift
+         - role: waynesun09.reportportal_openshift
 
 License
 -------
