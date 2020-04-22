@@ -1,5 +1,5 @@
-Ansible Role: ReportPortal
-==========================
+Ansible Role: ReportPortal-Openshift
+====================================
 
 Deploy ReportPortal v5 on OpenShift Container Platform.
 

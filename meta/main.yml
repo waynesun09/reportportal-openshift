@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: reportportal
+  role_name: reportportal-openshift
   author: Wayne Sun
   description: Deploy ReportPortal v5 services and dependencies on OpenShift
   company: Red Hat
