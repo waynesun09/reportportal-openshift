@@ -39,7 +39,7 @@ RabbitMQ deploy parameters:
     rabbitmq_volume_size: 8Gi
     load_definition: "{{ lookup('template', 'load-definition.json') | to_json | string | b64encode }}"
 
-If deploy_rabbimq is True, RabbitMQ service will also be deployed in current project namespace and don't need update the following default values.
+If deploy_rabbimq is `True`, RabbitMQ service will also be deployed in current project namespace and don't need update the following default values.
 
 RabbitMQ service default values:
 
@@ -52,7 +52,7 @@ RabbitMQ service default values:
     rabbitmq_apiport: 15672
     rabbitmq_secret: rabbitmq
 
-If deploy_rabbitmq is False, the values need be updated to use existing rabbitmq service.
+If deploy_rabbitmq is `False`, the values need be updated to use existing rabbitmq service.
 
 PostgreSQL deploy parameters:
 
@@ -60,7 +60,7 @@ PostgreSQL deploy parameters:
     db_storage_size: 8Gi
     pg_image: docker.io/bitnami/postgresql:11.7.0-debian-10-r9
 
-If deploy_postgresql is True, PostgreSQL service will also be deployed in current project namespace and don't need update the following default values.
+If deploy_postgresql is `True`, PostgreSQL service will also be deployed in current project namespace and don't need update the following default values.
 
 PostgreSQL service default values:
 rp_db: reportportal
@@ -70,7 +70,7 @@ rp_db_host: postgresql
 rp_db_port: 5432
 rp_db_secret: postgresql
 
-If deploy_postgresql is False, the values need be updated to use existing PostgreSQL service.
+If deploy_postgresql is `False`, the values need be updated to use existing PostgreSQL service.
 
 Minio deploy parameters:
 
@@ -79,7 +79,7 @@ Minio deploy parameters:
     minio_storage_size: 10Gi
     cloud_replicas: 4
 
-If deploy_minio is True, Minio service will also be deployed in current project namespace and don't need update the following default values.
+If deploy_minio is `True`, Minio service will also be deployed in current project namespace and don't need update the following default values.
 
 Mino service default values:
 
@@ -102,7 +102,7 @@ Mino service default values:
     oss_enabled: false
     oss_endpoint: ""
 
-If deploy_minio is False, the values need be updated to use existing Minio service.
+If deploy_minio is `False`, the values need be updated to use existing Minio service.
 
 Elasticsearch deploy parameters:
 
@@ -111,14 +111,14 @@ Elasticsearch deploy parameters:
     es_storage_size: 10Gi   # better 2update to 30
     es_image: docker.elastic.co/elasticsearch/elasticsearch:7.6.1
 
-If deploy_elasticsearch is True, Elasticsearch service will also be deployed in current project namespace and don't need update the following default values.
+If deploy_elasticsearch is `True`, Elasticsearch service will also be deployed in current project namespace and don't need update the following default values.
 
 Elasticsearch service default values:
 
     es_host: elasticsearch-master
     es_port: 9200
 
-If deploy_elasticsearch is False, the values need be updated to use existing Elasticsearch service.
+If deploy_elasticsearch is `False`, the values need be updated to use existing Elasticsearch service.
 
 ReportPortal services values
 
