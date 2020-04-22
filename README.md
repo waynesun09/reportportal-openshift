@@ -1,5 +1,5 @@
-Role Name
-=========
+Ansible Role: ReportPortal
+==========================
 
 Deploy ReportPortal v5 on OpenShift Container Platform.
 
