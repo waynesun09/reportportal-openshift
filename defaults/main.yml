@@ -1,6 +1,7 @@
 ---
 # RP gateway values
 # app_domain: apps.ocp.test.example.com
+gateway_replicas: 3
 
 # RP dependency services values
 # RabbitMQ deploy parameters

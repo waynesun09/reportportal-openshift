@@ -6,7 +6,7 @@ metadata:
   name: gateway
   namespace: '{{ namespace }}'
 spec:
-  replicas: 1
+  replicas: {{ gateway_replicas }}
   selector:
     matchLabels:
       component: gateway

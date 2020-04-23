@@ -6,7 +6,9 @@ metadata:
   name: reportportal
   namespace: '{{ namespace }}'
 spec:
-  host: 'reportportal-{{ namespace }}.{{ app_domain }}'
+{% if app_domain %}
+  host: 'reportportal-{{ meta.namespace }}.{{ app_domain }}'
+{% endif %}
   port:
     targetPort: http
   tls:
