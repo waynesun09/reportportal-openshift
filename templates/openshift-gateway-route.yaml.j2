@@ -4,10 +4,12 @@ metadata:
   labels:
     app: reportportal
   name: reportportal
-  namespace: '{{ namespace }}'
+  namespace: {{ namespace }}
 spec:
 {% if app_domain %}
-  host: 'reportportal-{{ meta.namespace }}.{{ app_domain }}'
+  host: reportportal-{{ namespace }}.{{ app_domain }}
+{% else %}
+  host:
 {% endif %}
   port:
     targetPort: http
