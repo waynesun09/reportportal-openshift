@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: postgresql
+    service: metrics
+  name: postgresql-metrics
+  namespace: {{ namespace }}
+spec:
+  ports:
+  - name: metrics
+    port: 9187
+    protocol: TCP
+    targetPort: metrics
+  selector:
+    app: postgresql
+    role: master
+  type: ClusterIP

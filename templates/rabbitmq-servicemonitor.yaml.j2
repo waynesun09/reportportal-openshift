@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: rabbitmq
+  name: rabbitmq-metrics
+  namespace: {{ namespace }}
+spec:
+  endpoints:
+  - honorLabels: false
+    interval: 30s
+    port: metrics
+  selector:
+    matchLabels:
+      app: rabbitmq

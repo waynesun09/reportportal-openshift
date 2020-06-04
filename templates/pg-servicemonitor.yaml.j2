@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: postgresql
+  name: postgres-metrics
+  namespace: {{ namespace }}
+spec:
+  endpoints:
+    - port: metrics
+  selector:
+    matchLabels:
+      app: postgresql
+      service: metrics
