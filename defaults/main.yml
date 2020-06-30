@@ -1,7 +1,7 @@
 ---
 # RP gateway values
 # app_domain: apps.ocp.test.example.com
-gateway_replicas: 3
+gateway_replicas: 1
 
 # RP dependency services values
 # RabbitMQ deploy parameters
@@ -35,6 +35,12 @@ rp_db_host: postgresql
 rp_db_port: 5432
 rp_db_secret: postgresql
 
+# PostgreSQL Restic S3 backup options
+enable_pg_restic_backup: "yes"
+pg_restic_s3_bucket_init: "yes"
+pg_restic_password: rp_user
+pg_s3_bucket_name: pgbackup-123123
+
 # Minio deploy parameters
 deploy_minio: True
 minio_image: minio/minio:RELEASE.2019-08-07T01-59-21Z
@@ -66,12 +72,17 @@ oss_endpoint: ""
 deploy_elasticsearch: True
 es_replicas: 1          # need update to 3 for ha
 es_storage_size: 10Gi   # better 2update to 30
-es_image: docker.elastic.co/elasticsearch/elasticsearch:7.6.1
+es_image: quay.io/waynesun09/elasticsearch:7.6.1-s3-plugin
 
 # Elasticsearch service default values
 # Update in vars if deploy_elasticsearch is False and use existing Elasticsearch service
 es_host: elasticsearch-master
 es_port: 9200
+
+# Elasticsearch s3 snapshot backup schedule
+es_s3_backup_dir: s3_backup
+es_snapshot_bucket: es-snapshot-123123
+es_backup_schedule: "@daily"
 
 # ReportPortal services values
 # index default values
