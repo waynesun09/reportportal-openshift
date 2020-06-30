@@ -40,6 +40,28 @@ spec:
           value: {{ rp_db }}
         - name: POSTGRESQL_ENABLE_LDAP
           value: "no"
+        - name: ENABLE_RESTIC_BACKUP
+          value: "{{ enable_pg_restic_backup }}"
+        - name: RESTIC_S3_BUCKET_INIT
+          value: "{{ pg_restic_s3_bucket_init }}"
+        - name: RESTIC_PASSWORD
+          value: "{{ pg_restic_password }}"
+        - name: S3_ENDPOINT
+          value: {{ minio_endpoint }}
+        - name: S3_BUCKET_NAME
+          value: {{ pg_s3_bucket_name }}
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              key: accesskey
+              name: minio
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: secretkey
+              name: minio
+        - name: XDG_CACHE_HOME
+          value: "/bitnami/postgresql/.cache/restic"
         image: {{ pg_image }}
         imagePullPolicy: IfNotPresent
         livenessProbe:
@@ -82,6 +104,8 @@ spec:
           name: dshm
         - mountPath: /bitnami/postgresql
           name: data
+        - mountPath: /docker-entrypoint-initdb.d
+          name: custom-init-restic-script
       - env:
         - name: DATA_SOURCE_URI
           value: 127.0.0.1:5432/reportportal?sslmode=disable
@@ -139,6 +163,9 @@ spec:
           medium: Memory
           sizeLimit: 1Gi
         name: dshm
+      - configMap:
+          name: pg-restic
+        name: custom-init-restic-script
   updateStrategy:
     type: RollingUpdate
   volumeClaimTemplates:
